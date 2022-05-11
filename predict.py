@@ -13,7 +13,7 @@ from utils.convert_state import convert_state_dict
 
 def predict(args, test_loader, model):
     """
-    args:                               没有标签的测试集
+    args:                               
       test_loader: loaded for test dataset, for those that do not provide label on the test set
       model: model
     return: class IoU and mean IoU
@@ -25,7 +25,7 @@ def predict(args, test_loader, model):
     for i, (input, label, size, name) in enumerate(test_loader):
    #for i, (input,label, size, name) in enumerate(test_loader):
         with torch.no_grad():
-            input_var = Variable(input).cuda() #变成variable形式，cuda能处理的数据
+            input_var = Variable(input).cuda() 
         start_time = time.time()
         output = model(input_var)
         torch.cuda.synchronize()
@@ -86,13 +86,13 @@ def test_model(args):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('--model', default="FDDWNet", help="model name: Context Guided Network (CGNet)")
-    parser.add_argument('--dataset', default="cityscapes", help="dataset: cityscapes or camvid")#camvid数据集不需要predict
+    parser.add_argument('--model', default="FBSNet", help="model name: Context Guided Network (CGNet)")
+    parser.add_argument('--dataset', default="cityscapes", help="dataset: cityscapes or camvid") #camvid数据集不需要predict
     parser.add_argument('--num_workers', type=int, default=1, help="the number of parallel threads")
     parser.add_argument('--batch_size', type=int, default=1,
                         help=" the batch_size is set to 1 when evaluating or testing")
     parser.add_argument('--checkpoint', type=str,
-                        default="",#添加checkpoint里面保存的模型
+                        default="",
 
                         help="use the file to load the checkpoint for evaluating or testing ")
     parser.add_argument('--save_seg_dir', type=str, default="./result/",
