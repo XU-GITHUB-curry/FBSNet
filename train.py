@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from torch.autograd import Variable
 import torch.backends.cudnn as cudnn
 from argparse import ArgumentParser
-#argparse是一个全面的参数处理库。参数可以触发不同的动作，动作由 add_argument() 方法的 action 参数指定。
+
 # user
 from builders.model_builder import build_model
 from builders.dataset_builder import build_dataset_train
@@ -29,21 +29,21 @@ def val(args, val_loader, model):
     return: mean IoU and IoU class
     """
     # evaluation mode
-    model.eval()  #把模型model.eval()作用是为了固定BN和dropout层，使得偏置参数不随着发生变化
+    model.eval()  
     total_batches = len(val_loader)
 
     data_list = []
-    for i, (input, label, size, name) in enumerate(val_loader): #enumerate 函数用于遍历序列中的元素以及它们的下标
+    for i, (input, label, size, name) in enumerate(val_loader): 
         with torch.no_grad():
             input_var = Variable(input).cuda()
         start_time = time.time()
         output = model(input_var)
-        time_taken = time.time() - start_time  #计算花费的时间
+        time_taken = time.time() - start_time  
         print("[%d/%d]  time: %.2f" % (i + 1, total_batches, time_taken))
         output = output.cpu().data[0].numpy()
         gt = np.asarray(label[0].numpy(), dtype=np.uint8)
         output = output.transpose(1, 2, 0)  #WHC
-        output = np.asarray(np.argmax(output, axis=2), dtype=np.uint8) #返回沿轴axis最大值的索引
+        output = np.asarray(np.argmax(output, axis=2), dtype=np.uint8) 
         data_list.append([gt.flatten(), output.flatten()])
 
     meanIoU, per_class_iu = get_iou(data_list, args.classes)#data_list: a list, its elements [gt, output]
@@ -111,8 +111,7 @@ def train_model(args):
        args: global arguments
     """
     h, w = map(int, args.input_size.split(','))
-    #map()是 Python 内置的高阶函数，它接收一个函数 f 和一个 list，
-    # 并通过把函数 f 依次作用在 list 的每个元素上，得到一个新的 list 并返回
+    
     input_size = (h, w)
     print("=====> input size:{}".format(input_size))
 
@@ -197,10 +196,10 @@ def train_model(args):
     logFileLoc = args.savedir + args.logFile
     if os.path.isfile(logFileLoc):
         logger = open(logFileLoc, 'a')
-        #a:打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。
+        
     else:
         logger = open(logFileLoc, 'w')
-        #w:打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+        
         logger.write("Parameters: %s Seed: %s" % (str(total_paramters), GLOBAL_SEED))
         logger.write("\n%s\t\t%s\t%s\t%s" % ('Epoch', 'Loss(Tr)', 'mIOU (val)', 'lr'))
     logger.flush()
@@ -286,18 +285,18 @@ def train_model(args):
 if __name__ == '__main__':
     start = timeit.default_timer()
     parser = ArgumentParser()
-    parser.add_argument('--model', default="FDDWNet", help="model name")
+    parser.add_argument('--model', default="FBSNet", help="model name")
     parser.add_argument('--dataset', default="cityscapes", help="dataset: cityscapes or camvid")
     parser.add_argument('--train_type', type=str, default="train",
                         help="ontrain for training on train set, ontrainval for training on train+val set")
-    parser.add_argument('--max_epochs', type=int, default=500,
+    parser.add_argument('--max_epochs', type=int, default=1000,
                         help="the number of epochs: 300 for train set, 350 for train+val set")
     parser.add_argument('--input_size', type=str, default="512,1024", help="input size of model")
     parser.add_argument('--random_mirror', type=bool, default=True, help="input image random mirror")
     parser.add_argument('--random_scale', type=bool, default=True, help="input image resize 0.5 to 2")
     parser.add_argument('--num_workers', type=int, default=4, help=" the number of parallel threads")
-    parser.add_argument('--lr', type=float, default=1e-3, help="initial learning rate")
-    parser.add_argument('--batch_size', type=int, default=4, help="the batch size is set to 16 for 2 GPUs")
+    parser.add_argument('--lr', type=float, default=4.5e-2, help="initial learning rate")
+    parser.add_argument('--batch_size', type=int, default=8, help="the batch size is set to 16 for 2 GPUs")
     parser.add_argument('--savedir', default="./checkpoint/", help="directory to save the model snapshot")
     parser.add_argument('--resume', type=str, default="",
                         help="use this file to load last checkpoint for continuing training")
