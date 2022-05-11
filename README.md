@@ -1,6 +1,6 @@
  # FBSNet
 
-This repository is an official PyTorch implementation of our paper"FBSNet: A Fast Bilateral Symmetrical Network for Real-Time Semantic Segmentation".  Accepted by IEEE Transactions on Multimedia, 2022 
+This repository is an official PyTorch implementation of our paper"FBSNet: A Fast Bilateral Symmetrical Network for Real-Time Semantic Segmentation".  Accepted by IEEE TRANSACTIONS ON MULTIMEDIA, 2022. (IF: 6.513)
 
 [Paper](https://arxiv.org/abs/2109.00699v1) | [Code](https://github.com/XU-GITHUB-curry/FBSNet)
 
@@ -119,4 +119,4 @@ If you find this project useful for your research, please cite our paper:
 ## Acknowledgements
 
 1. [LEDNet: A Lightweight Encoder-Decoder Network for Real-Time Semantic Segmentation](https://arxiv.org/abs/1905.02423)
-2. [BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation]([[1808.00897\] BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation (arxiv.org)](https://arxiv.org/abs/1808.00897))
+2. [BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation](https://arxiv.org/abs/1808.00897)
