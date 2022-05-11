@@ -82,7 +82,7 @@ def train(args, train_loader, model, criterion, optimizer, epoch):
         loss = criterion(output, labels)
         scheduler.step()
 
-        # set the grad to zero  反向传播之前 梯度设置为0
+        
         optimizer.zero_grad()
 
         loss.backward()
@@ -132,7 +132,7 @@ def train_model(args):
 
     # build the model and initialization
     model = build_model(args.model, num_classes=args.classes)
-    init_weight(model, nn.init.kaiming_normal_,   #权重初始化
+    init_weight(model, nn.init.kaiming_normal_,   
                 nn.BatchNorm2d, 1e-3, 0.1,
                 mode='fan_in')
 
@@ -181,7 +181,7 @@ def train_model(args):
 
     # continue training
     if args.resume:
-        if os.path.isfile(args.resume): #这个参数主要是用来设置是否从断点处继续训练
+        if os.path.isfile(args.resume): 
             checkpoint = torch.load(args.resume)
             start_epoch = checkpoint['epoch']
             model.load_state_dict(checkpoint['model'])
