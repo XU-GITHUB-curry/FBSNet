@@ -87,7 +87,11 @@ python test.py --dataset cityscapes --checkpoint ./checkpoint/cityscapes/FBSNetb
 python test.py --dataset camvid --checkpoint ./checkpoint/camvid/FBSNetbs6gpu1_trainval/model_1000.pth
 ```
 
-
+## Predict
+only for cityscapes dataset
+```
+python predict.py --dataset cityscapes 
+```
 
 ## Results
 
