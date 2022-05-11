@@ -8,6 +8,8 @@ Real-Time Semantic Segmentation".
 We used Cityscapes dataset and CamVid sataset to train our model. Please download them from [Cityscapes](https://www.cityscapes-dataset.com/) and [CamVid](http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/).
 
 |-- dataset  
+|      |-- camvid  
+|      |        |-- train  
 |  |-- camvid  
 |  |  |-- train  
 |  |  |-- trainannot  
