@@ -2,7 +2,7 @@
 
 This repository is an official PyTorch implementation of our paper"FBSNet: A Fast Bilateral Symmetrical Network for Real-Time Semantic Segmentation".  Accepted by IEEE Transactions on Multimedia, 2022 
 
-[Paper]([[2109.00699v1\] FBSNet: A Fast Bilateral Symmetrical Network for Real-Time Semantic Segmentation (arxiv.org)](https://arxiv.org/abs/2109.00699v1))|[Code]([XU-GITHUB-curry/FBSNet: Real-time Semantic Segmentation](https://github.com/XU-GITHUB-curry/FBSNet))  
+[Paper](https://arxiv.org/abs/2109.00699v1)|[Code](https://github.com/XU-GITHUB-curry/FBSNet)
 
 
 
