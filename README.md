@@ -9,5 +9,5 @@ We used Cityscapes dataset and CamVid sataset to train our model. Please downloa
 
 # Train
 ```
-python train.py
+python train.py --dataset cityscapes/camvid --train_type train/trainval --max_epochs 1000 --lr 4.5e-2 --batchsize 8
 ```
