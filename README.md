@@ -7,27 +7,12 @@ Real-Time Semantic Segmentation".
 
 We used Cityscapes dataset and CamVid sataset to train our model. Please download them from [Cityscapes](https://www.cityscapes-dataset.com/) and [CamVid](http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/).
 
-|-- dataset  
-|      |-- camvid  
-|      |        |-- train  
-|  |-- camvid  
-|  |  |-- train  
-|  |  |-- trainannot  
-|  |  |-- val  
-|  |  |-- valannot  
-|  |  |-- test  
-|  |  |-- testannot  
-|  |  |-- ...  
-|  |-- cityscapes  
-|  |  |-- leftImg8bit  
-|  |  |  |-- train  
-|  |  |  |-- val  
-|  |  |  |-- test  
-|  |  |-- gtFine  
-|  |  |  |-- train  
-|  |  |  |-- val  
-|  |  |  |-- test  
-|  |  |-- ...  
+You can download cityscapes dataset from [here](https://www.cityscapes-dataset.com/).
+Note: please download leftImg8bit_trainvaltest.zip(11GB) and gtFine_trainvaltest(241MB).
+The Cityscapes dataset scripts for inspection, preparation, and evaluation can download from [here](https://github.com/mcordts/cityscapesScripts).
+
+You can download camvid dataset from [here](http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/).
+
 
 # Train
 ```
