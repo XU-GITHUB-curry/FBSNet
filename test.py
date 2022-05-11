@@ -148,14 +148,14 @@ def test_model(args):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('--model', default="FDDWNet", help="model name: Context Guided Network (CGNet)")
+    parser.add_argument('--model', default="FBSNet", help="model name: Context Guided Network (CGNet)")
     parser.add_argument('--dataset', default="cityscapes", help="dataset: cityscapes or camvid")
     parser.add_argument('--num_workers', type=int, default=1, help="the number of parallel threads")
     parser.add_argument('--batch_size', type=int, default=1,
                         help=" the batch_size is set to 1 when evaluating or testing")
     parser.add_argument('--checkpoint', type=str,
-                        #default=""#需要放路径
-                        default="./checkpoint/camvid/FDDWNetbs16gpu1_trainval/model_999.pth",
+                        
+                        default="./checkpoint/cityscapes/FBSNetbs8gpu1_train/model_999.pth",
                         help="use the file to load the checkpoint for evaluating or testing ")
     parser.add_argument('--save_seg_dir', type=str, default="./result/",
                         help="saving path of prediction result")
